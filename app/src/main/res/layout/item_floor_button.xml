@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tvFloorButton"
+    android:layout_width="52dp"
+    android:layout_height="52dp"
+    android:background="@drawable/bg_floor_button"
+    android:gravity="center"
+    android:textSize="16sp"
+    android:fontFamily="@font/pretendard_semibold"
+    android:textColor="@color/floor_button_text_color"
+    tools:text="1층" />
