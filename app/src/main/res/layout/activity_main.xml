@@ -9,8 +9,8 @@
     tools:context=".MainActivity">
 
     <include
-        android:id="@+id/searchLayout"
-        layout="@layout/search_bar"
+        android:id="@+id/card"
+        layout="@layout/view_parking_type_filter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
