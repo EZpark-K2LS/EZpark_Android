@@ -1,0 +1,20 @@
+# Build outputs
+build/
+**/build/
+.gradle/
+
+# Local config
+local.properties
+
+# IDE
+*.iml
+.idea/
+
+# Captures / logs
+captures/
+*.log
+
+# Tooling state
+.claude/
+.omc/
+.githooks/

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ezpark Design System — Token Preview</title>
+<style>
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('./fonts/pretendard_regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('./fonts/pretendard_medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('./fonts/pretendard_semibold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    background: #F5F5F5;
+    color: #474747;
+    padding: 40px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #474747;
+  }
+  .subtitle {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #999999;
+    margin-bottom: 48px;
+  }
+
+  section { margin-bottom: 56px; }
+
+  h2 {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #474747;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #EAEAEA;
+  }
+
+  /* ── Colors ── */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+  }
+  .color-card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 6px 4px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  .color-swatch {
+    height: 72px;
+    width: 100%;
+    border-bottom: 1px solid #EAEAEA;
+  }
+  .color-info {
+    padding: 10px 12px;
+  }
+  .color-token {
+    font-family: 'Pretendard', monospace;
+    font-weight: 600;
+    font-size: 11px;
+    color: #474747;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .color-hex {
+    font-family: monospace;
+    font-size: 12px;
+    color: #999999;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .color-role {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 11px;
+    color: #999999;
+    line-height: 1.4;
+  }
+
+  /* ── Typography ── */
+  .typo-table { width: 100%; border-collapse: collapse; }
+  .typo-table th {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #999999;
+    text-align: left;
+    padding: 8px 12px;
+    background: #EAEAEA;
+    border-radius: 4px;
+  }
+  .typo-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #EAEAEA;
+    vertical-align: middle;
+  }
+  .typo-table tr:last-child td { border-bottom: none; }
+  .typo-token {
+    font-family: monospace;
+    font-size: 12px;
+    color: #375CFF;
+    white-space: nowrap;
+  }
+  .typo-meta {
+    font-size: 12px;
+    color: #999999;
+    white-space: nowrap;
+  }
+  .typo-sample {
+    color: #474747;
+    line-height: 1;
+  }
+
+  /* ── Shapes ── */
+  .shape-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-end;
+  }
+  .shape-card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    min-width: 160px;
+    box-shadow: 0 6px 4px rgba(0,0,0,0.08);
+  }
+  .shape-box {
+    background: #E4E9FF;
+    border: 2px solid #375CFF;
+    width: 80px;
+    height: 48px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .shape-circle {
+    width: 44px;
+    height: 44px;
+    background: #474747;
+    color: white;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+  }
+  .shape-token {
+    font-family: monospace;
+    font-size: 12px;
+    color: #375CFF;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .shape-value {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 12px;
+    color: #999999;
+  }
+  .shadow-demo {
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px 24px;
+    box-shadow: 0px 6px 4px rgba(0,0,0,0.15);
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #474747;
+    display: inline-block;
+    margin-top: 8px;
+  }
+  .shadow-label {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 12px;
+    color: #999999;
+    margin-top: 12px;
+    font-family: monospace;
+  }
+</style>
+</head>
+<body>
+
+<h1>Ezpark Design System</h1>
+<p class="subtitle">Token catalog — light theme only &nbsp;·&nbsp; Pretendard font family &nbsp;·&nbsp; v1.0 (2026-04-18)</p>
+
+<!-- ──────────────────────────────────────────── -->
+<section id="colors">
+  <h2>Colors</h2>
+  <div class="color-grid">
+
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FFFFFF; border-bottom:1px solid #EAEAEA;"></div>
+      <div class="color-info">
+        <span class="color-token">gray/10</span>
+        <span class="color-hex">#FFFFFF</span>
+        <span class="color-role">Surface, card background</span>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background:#EAEAEA;"></div>
+      <div class="color-info">
+        <span class="color-token">gray/20</span>
+        <span class="color-hex">#EAEAEA</span>
+        <span class="color-role">Empty parking space, divider</span>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background:#C2C2C2;"></div>
+      <div class="color-info">
+        <span class="color-token">gray/40</span>
+        <span class="color-hex">#C2C2C2</span>
+        <span class="color-role">Disabled floor button</span>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background:#999999;"></div>
+      <div class="color-info">
+        <span class="color-token">gray/60</span>
+        <span class="color-hex">#999999</span>
+        <span class="color-role">Secondary text, location label</span>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background:#474747;"></div>
+      <div class="color-info">
+        <span class="color-token">gray/100</span>
+        <span class="color-hex">#474747</span>
+        <span class="color-role">Primary text, active floor button</span>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background:#375CFF;"></div>
+      <div class="color-info">
+        <span class="color-token">primary/blue</span>
+        <span class="color-hex">#375CFF</span>
+        <span class="color-role">Primary CTA button</span>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background:#E4E9FF;"></div>
+      <div class="color-info">
+        <span class="color-token">primary/accent</span>
+        <span class="color-hex">#E4E9FF</span>
+        <span class="color-role">Info card secondary block</span>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FF5959;"></div>
+      <div class="color-info">
+        <span class="color-token">alert/red</span>
+        <span class="color-hex">#FF5959</span>
+        <span class="color-role">"N자리 남음" badge, alert pin</span>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background:#DAFFD2; border:1px solid #23D200;"></div>
+      <div class="color-info">
+        <span class="color-token">success/light</span>
+        <span class="color-hex">#DAFFD2</span>
+        <span class="color-role">Available parking space fill</span>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background:#23D200;"></div>
+      <div class="color-info">
+        <span class="color-token">success/border</span>
+        <span class="color-hex">#23D200</span>
+        <span class="color-role">Available parking space border</span>
+      </div>
+    </div>
+
+    <div class="color-card">
+      <div class="color-swatch" style="background:#E40000;"></div>
+      <div class="color-info">
+        <span class="color-token">pin/red</span>
+        <span class="color-hex">#E40000</span>
+        <span class="color-role">Map pin core</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────── -->
+<section id="typography">
+  <h2>Typography</h2>
+  <table class="typo-table">
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Size / Weight</th>
+        <th>Sample (Pretendard)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="typo-token">heading3</span></td>
+        <td><span class="typo-meta">20sp / SemiBold 600</span></td>
+        <td><span class="typo-sample" style="font-family:'Pretendard',sans-serif;font-weight:600;font-size:20px;">신성동 제2 공영주차장</span></td>
+      </tr>
+      <tr>
+        <td><span class="typo-token">subtitle2</span></td>
+        <td><span class="typo-meta">18sp / SemiBold 600</span></td>
+        <td><span class="typo-sample" style="font-family:'Pretendard',sans-serif;font-weight:600;font-size:18px;">주차장 정보</span></td>
+      </tr>
+      <tr>
+        <td><span class="typo-token">subtitle3</span></td>
+        <td><span class="typo-meta">16sp / SemiBold 600</span></td>
+        <td><span class="typo-sample" style="font-family:'Pretendard',sans-serif;font-weight:600;font-size:16px;">3층 주차 구역</span></td>
+      </tr>
+      <tr>
+        <td><span class="typo-token">subtitle4</span></td>
+        <td><span class="typo-meta">14sp / SemiBold 600</span></td>
+        <td><span class="typo-sample" style="font-family:'Pretendard',sans-serif;font-weight:600;font-size:14px;">5자리 남음</span></td>
+      </tr>
+      <tr>
+        <td><span class="typo-token">subtitle5</span></td>
+        <td><span class="typo-meta">12sp / SemiBold 600</span></td>
+        <td><span class="typo-sample" style="font-family:'Pretendard',sans-serif;font-weight:600;font-size:12px;">태그 라벨</span></td>
+      </tr>
+      <tr>
+        <td><span class="typo-token">body3</span></td>
+        <td><span class="typo-meta">16sp / Medium 500</span></td>
+        <td><span class="typo-sample" style="font-family:'Pretendard',sans-serif;font-weight:500;font-size:16px;">서울특별시 강남구 테헤란로 123</span></td>
+      </tr>
+      <tr>
+        <td><span class="typo-token">button2</span></td>
+        <td><span class="typo-meta">16sp / Medium 500</span></td>
+        <td><span class="typo-sample" style="font-family:'Pretendard',sans-serif;font-weight:500;font-size:16px;background:#375CFF;color:#fff;padding:10px 20px;border-radius:26px;display:inline-block;">주차장 확인하기</span></td>
+      </tr>
+      <tr>
+        <td><span class="typo-token">caption1</span></td>
+        <td><span class="typo-meta">16sp / Regular 400</span></td>
+        <td><span class="typo-sample" style="font-family:'Pretendard',sans-serif;font-weight:400;font-size:16px;">주차장 검색...</span></td>
+      </tr>
+      <tr>
+        <td><span class="typo-token">caption2</span></td>
+        <td><span class="typo-meta">14sp / Regular 400</span></td>
+        <td><span class="typo-sample" style="font-family:'Pretendard',sans-serif;font-weight:400;font-size:14px;color:#999999;">350m · 도보 4분</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ──────────────────────────────────────────── -->
+<section id="shapes">
+  <h2>Shapes &amp; Elevation</h2>
+  <div class="shape-grid">
+
+    <div class="shape-card">
+      <div class="shape-box" style="border-radius:8px;"></div>
+      <span class="shape-token">EzparkShapes.card</span>
+      <span class="shape-value">RoundedCornerShape(8dp)</span>
+    </div>
+
+    <div class="shape-card">
+      <div class="shape-box" style="border-radius:26px; height:40px; width:100px;"></div>
+      <span class="shape-token">EzparkShapes.pill</span>
+      <span class="shape-value">RoundedCornerShape(26dp)</span>
+    </div>
+
+    <div class="shape-card">
+      <div class="shape-box" style="border-radius:32px; height:36px; width:96px;"></div>
+      <span class="shape-token">EzparkShapes.chip</span>
+      <span class="shape-value">RoundedCornerShape(32dp)</span>
+    </div>
+
+    <div class="shape-card">
+      <div class="shape-circle" style="border-radius:50%;">층</div>
+      <span class="shape-token">EzparkShapes.floorButton</span>
+      <span class="shape-value">CircleShape · 44dp diameter</span>
+    </div>
+
+  </div>
+
+  <div style="margin-top:32px;">
+    <h3 style="font-family:'Pretendard',sans-serif;font-weight:600;font-size:14px;color:#474747;margin-bottom:12px;">Card Elevation</h3>
+    <div class="shadow-demo">신성동 제2 공영주차장 &nbsp;·&nbsp; 5자리 남음</div>
+    <p class="shadow-label" style="font-size:12px;color:#999;margin-top:10px;font-family:monospace;">box-shadow: 0px 6px 4px rgba(0,0,0,0.15)</p>
+  </div>
+</section>
+
+</body>
+</html>
